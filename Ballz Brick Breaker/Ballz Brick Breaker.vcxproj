@@ -159,6 +159,11 @@
   <ItemGroup>
     <Font Include="arial.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="hit.mp3" />
+    <Media Include="Smash.mp3" />
+    <Media Include="song.mp3" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\AllegroDeps.1.11.0\build\native\AllegroDeps.targets" Condition="Exists('..\packages\AllegroDeps.1.11.0\build\native\AllegroDeps.targets')" />

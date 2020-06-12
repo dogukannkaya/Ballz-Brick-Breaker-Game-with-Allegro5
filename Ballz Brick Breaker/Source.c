@@ -4,7 +4,8 @@
 #include<time.h>
 #include<allegro5/allegro_font.h>
 #include<allegro5/allegro_ttf.h>
-
+#include<allegro5/allegro_audio.h>
+#include<allegro5/allegro_acodec.h>
 struct coordinates
 {
 	int xCoordinate;
@@ -18,6 +19,10 @@ int main() {
 	al_init_primitives_addon();
 	al_init_font_addon();
 	al_init_ttf_addon();
+	al_install_audio();
+	al_init_acodec_addon();
+
+
 	ALLEGRO_DISPLAY* display = NULL;
 	ALLEGRO_EVENT_QUEUE* queue = NULL;
 	ALLEGRO_TIMER* timer;
@@ -76,6 +81,14 @@ int main() {
 	ALLEGRO_FONT* arial = al_load_ttf_font("arial.ttf", 24, 0);
 	ALLEGRO_FONT* arial90 = al_load_ttf_font("arial.ttf", 55, 0);
 	ALLEGRO_FONT* arial16 = al_load_ttf_font("arial.ttf", 16, 0);
+
+	al_reserve_samples(3);
+	ALLEGRO_SAMPLE* hitt = al_load_sample("hit.mp3");
+	ALLEGRO_SAMPLE* smash = al_load_sample("Smash.mp3");
+	ALLEGRO_SAMPLE* song = al_load_sample("song.mp3");
+
+	al_play_sample(song, 0.1, 0, 1.0, ALLEGRO_PLAYMODE_BIDIR, 0);
+
 
 	while (1) {
 
@@ -249,21 +262,25 @@ int main() {
 				{
 					direction = 1;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 1)
 				{
 					direction = 0;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 2)
 				{
 					direction = 3;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 3)
 				{
 					direction = 2;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 			}
 
@@ -273,66 +290,79 @@ int main() {
 				{
 					direction = 5;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 5)
 				{
 					direction = 4;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 6)
 				{
 					direction = 7;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 7)
 				{
 					direction = 6;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 7)
 				{
 					direction = 6;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 8)
 				{
 					direction = 9;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 10)
 				{
 					direction = 11;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 12)
 				{
 					direction = 13;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 14)
 				{
 					direction = 15;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 9)
 				{
 					direction = 8;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 11)
 				{
 					direction = 10;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 13)
 				{
 					direction = 12;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 15)
 				{
 					direction = 14;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 			}
 			if (abs((square[i].xCoordinate + 26) - xpos) <= 40 && abs((square[i].yCoordinate + 26) - ypos) <= 60) // alt üst
@@ -341,41 +371,49 @@ int main() {
 				{
 					direction = 6;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 6)
 				{
 					direction = 4;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 5)
 				{
 					direction = 7;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 7)
 				{
 					direction = 5;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 8)
 				{
 					direction = 12;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 9)
 				{
 					direction = 13;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 10)
 				{
 					direction = 14;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 				else if (direction == 11)
 				{
 					direction = 15;
 					square[i].hitcounter--;
+					al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				}
 			}
 		}
@@ -386,30 +424,37 @@ int main() {
 			if (direction == 0)
 			{
 				direction = 1;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 4)
 			{
 				direction = 5;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 6)
 			{
 				direction = 7;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 8)
 			{
 				direction = 9;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 10)
 			{
 				direction = 11;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 12)
 			{
 				direction = 13;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 14)
 			{
 				direction = 15;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 		}
 		else if (xpos <= 10)
@@ -417,30 +462,37 @@ int main() {
 			if (direction == 1)
 			{
 				direction = 0;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 5)
 			{
 				direction = 4;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 7)
 			{
 				direction = 6;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 9)
 			{
 				direction = 8;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 11)
 			{
 				direction = 10;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 13)
 			{
 				direction = 12;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 15)
 			{
 				direction = 14;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 		}
 		else if (ypos <= 20)
@@ -448,30 +500,37 @@ int main() {
 			if (direction == 3)
 			{
 				direction = 2;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 6)
 			{
 				direction = 4;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 7)
 			{
 				direction = 5;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 8)
 			{
 				direction = 12;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 9)
 			{
 				direction = 13;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 10)
 			{
 				direction = 14;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 			else if (direction == 11)
 			{
 				direction = 15;
+				al_play_sample(hitt, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 			}
 		}
 
@@ -563,13 +622,16 @@ int main() {
 					square[i].xCoordinate = 700;
 					square[i].hitcounter = 11;
 					score++;
+
 				}
 				else if (i % 2 == 1)
 				{
 					square[i].xCoordinate = 700;
 					square[i].hitcounter = 11;
 					score++;
+
 				}
+
 			}
 		}
 		if (square[0].hitcounter == 11 && square[1].hitcounter == 11 && square[2].hitcounter == 11 && square[3].hitcounter == 11 && square[4].hitcounter == 11 && square[5].hitcounter == 11 && square[6].hitcounter == 11 && square[7].hitcounter == 11 && square[8].hitcounter == 11 && square[9].hitcounter == 11 && score < 30)
@@ -596,7 +658,7 @@ int main() {
 				square[8].yCoordinate = 250;
 				square[9].xCoordinate = rand() % 300 + 250;
 				square[9].yCoordinate = 250;
-
+				al_play_sample(smash, 1.0, 0, 1.0, ALLEGRO_PLAYMODE_ONCE, 0);
 				for (i = 0; i < 10; i++)
 				{
 					square[i].hitcounter = 10;
@@ -625,6 +687,8 @@ int main() {
 		if (score >= 30) {
 			finish = 1;
 			al_draw_textf(arial90, al_map_rgb(255, 255, 255), 15, 350, 0, "CONGRATULATIONS!");
+			al_draw_textf(arial, al_map_rgb(255, 255, 255), 180, 420, 0, "PRESS ESC TO EXIT");
+			al_destroy_sample(song);
 		}
 
 		al_flip_display();

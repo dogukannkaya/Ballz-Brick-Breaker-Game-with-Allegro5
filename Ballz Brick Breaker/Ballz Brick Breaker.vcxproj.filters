@@ -27,4 +27,15 @@
       <Filter>Source Files</Filter>
     </Font>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="hit.mp3">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Smash.mp3">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="song.mp3">
+      <Filter>Source Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
